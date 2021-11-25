@@ -100,7 +100,7 @@ increment();
  * ※四則演算は"+","-","*","/"を数値ではさんで計算を行います。
  */
 
-function calcFactory(value) {
+const calc = (function(value) {
   return {
     plus: function(target) {
       const newVal = value + target;
@@ -126,9 +126,9 @@ function calcFactory(value) {
       value = newVal;
     }
   }
-}
+})(10);
 
-const calc = calcFactory(10);
+
 calc.plus(5);     
 calc.minus(3);    
 calc.multiply(3);  
