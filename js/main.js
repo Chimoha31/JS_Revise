@@ -206,7 +206,6 @@ fn(z);
  * greeting("Bob"); -> 出力結果："hello, Bob"
  *
  */
-
  function greeting(name, greet = "hello, ") {
    console.log(greet + name);
  }
@@ -214,3 +213,40 @@ fn(z);
  greeting("Bob", "hi, ");
  greeting("Bob");
  
+
+ /**
+ * 問題：
+ * 以下の操作を行った際にコンソールで表示される
+ * 値はどうなるでしょうか？結果を考えてみてください。
+ */
+let val5 = 0;
+let val6 = val5;
+val6 = 1;
+console.log(val5); // 0
+
+
+let obj = {
+    prop1: 10
+}
+const obj2 = obj;
+obj2.prop1 = 9;
+
+console.log(obj); // {prop1: 9}
+
+
+function fn1(arg) {
+    arg.prop2 = 8;
+    return arg;
+}
+let obj3 = fn1(obj2);
+
+ console.log(obj); // {prop1: 9} {prop2: 8}
+
+
+function fn2(arg) {
+    arg = {};
+    return arg;
+}
+const obj4 = fn2(obj); // 問題４
+
+console.log(obj);  //{prop1: 9} {prop2: 8}
