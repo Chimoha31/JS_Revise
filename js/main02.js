@@ -73,26 +73,27 @@
 
 
 
-function hello(name) {
-  console.log('hello ' + name);
-}
+// function hello(name) {
+//   console.log('hello ' + name);
+// }
 
-function bye() {
-  console.log('Bye');
-}
+// function bye() {
+//   console.log('Bye');
+// }
 
-function fn(cb) {
-  cb('Tom');
-}
+// function fn(cb) {
+//   cb('Tom');
+// }
 
-fn(hello);
-fn(bye);
-fn(function(name) {
-  console.log('Hello ' + name);
-});
+// fn(hello);
+// fn(bye);
+// fn(function(name) {
+//   console.log('Hello ' + name);
+// });
 
-setTimeout(hello, 1000);
+// setTimeout(hello, 1000);
 
+window.name = "Hana";
 
 const person = {
   name: 'Chiho',
@@ -101,4 +102,41 @@ const person = {
   }
 }
 
+// オブジェクトのメソッドとして実行される場合、呼び出し元のオブジェクトを参照
 person.hello();
+
+const helloChiho = person.hello.bind(person);
+
+//関数として実行される場合はthisはグローバルオブジェクトを参照
+// function fn(ref2) {
+//   ref2();
+// }
+// fn(helloChiho);
+
+
+
+function u(name, name1) {
+  console.log('hello ' + name + ' ' + name1);
+}
+
+const tim = {name: 'Tim'};
+
+const s = u.bind(tim);
+s();
+
+/*apply(), call()メソッドの 第二引数以降は、仮引数として扱われる*/
+//配列を使う場合は、apply
+u.apply(tim, ['Tim', 'Bob']);
+//変数が独立している場合は、call
+u.call(tim, 'Tim', 'Bob');
+
+
+//apply()の使用例(ES5まで / ES6の導入で使用回数激減。その代わり、spread構文が使われるようになった)
+const arr = [1, 2, 3,4 ,5];
+const result1 = Math.max.apply(null, arr);
+console.log(result1);
+
+//spread構文の場合(ES6以降 / こちらを使用するのがベター)
+const arr1 = [1 ,2 ,3, 4, 5];
+const result2 = Math.max(...arr1);
+console.log(result2);
