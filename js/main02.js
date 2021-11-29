@@ -9,65 +9,96 @@
  * の値を変更することができるでしょうか？
  * 
  */
-let obj = {
-  prop1: 10
+// let obj1 = {
+//   prop1: 10
+// }
+
+// function minus(obj1, val) {
+//   let prop1 = obj1.prop1;
+//    obj1.prop1 = prop1 - val;
+// }
+
+// minus(obj1, 1);
+// console.log(obj1.prop1);
+// /**
+// * 問題２：
+// * double関数を使ってobj.prop1の値を２倍にしたい
+// * と思っていました。しかし、コンソールに表示された
+// * のは元の値である'9'でした。
+// * どうすれば、'18'が表示されるようになるでしょうか？
+// * 
+// * '18'が表示されるように、double関数内を修正してください。
+// */
+
+// function double(obj) {
+//   let { prop1 } = obj;
+//   obj.prop1 = obj.prop1 * 2;
+// }
+
+// double(obj);
+// console.log(obj.prop1);
+
+
+// /**
+// * 問題３：
+// * 以下のコードでfn関数を実行した後にprop3の
+// * 値を出力した場合に1、2、3のどれが出力
+// * されるか、そして*なぜそのようになるのか*を
+// * 考えてみてください。
+// */
+// obj.prop2 = {
+//   prop3: 1
+// }
+
+// function fn({ prop2 }) {
+//   let prop = prop2;
+//   prop.prop3 = 2;
+//   prop = { prop3: 3 };
+//   return { prop2: prop };
+// }
+// obj = fn(obj);
+// console.log(obj.prop2.prop3);
+
+// /**
+// * 問題４：
+// * through関数を経由して格納されるobj2は
+// * objと等価でしょうか？
+// */
+// function through (obj) {
+//   return obj;
+// }
+
+// const obj9 = through(obj);
+// console.log(obj === obj9);
+
+
+
+function hello(name) {
+  console.log('hello ' + name);
 }
 
-function minus(obj, val) {
-  let prop1 = obj.prop1;
-   obj.prop1 = prop1 - val;
-
+function bye() {
+  console.log('Bye');
 }
 
-minus(obj, 1);
-console.log(obj.prop1);
-/**
-* 問題２：
-* double関数を使ってobj.prop1の値を２倍にしたい
-* と思っていました。しかし、コンソールに表示された
-* のは元の値である'9'でした。
-* どうすれば、'18'が表示されるようになるでしょうか？
-* 
-* '18'が表示されるように、double関数内を修正してください。
-*/
-
-function double(obj) {
-  let { prop1 } = obj;
-  obj.prop1 = obj.prop1 * 2;
+function fn(cb) {
+  cb('Tom');
 }
 
-double(obj);
-console.log(obj.prop1);
+fn(hello);
+fn(bye);
+fn(function(name) {
+  console.log('Hello ' + name);
+});
+
+setTimeout(hello, 1000);
 
 
-/**
-* 問題３：
-* 以下のコードでfn関数を実行した後にprop3の
-* 値を出力した場合に1、2、3のどれが出力
-* されるか、そして*なぜそのようになるのか*を
-* 考えてみてください。
-*/
-obj.prop2 = {
-  prop3: 1
+const person = {
+  name: 'Chiho',
+  hello: function() {
+    console.log('Hello ' + this.name);
+  }
 }
 
-function fn({ prop2 }) {
-  let prop = prop2;
-  prop.prop3 = 2;
-  prop = { prop3: 3 };
-  return { prop2: prop };
-}
-obj = fn(obj);
-console.log(obj.prop2.prop3);
-
-/**
-* 問題４：
-* through関数を経由して格納されるobj2は
-* objと等価でしょうか？
-*/
-function through (obj) {
-  return obj;
-}
-
-const obj2 = through(obj);
-console.log(obj === obj2);
+person.hello();
