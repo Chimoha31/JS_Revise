@@ -114,7 +114,6 @@ const helloChiho = person.hello.bind(person);
 // fn(helloChiho);
 
 
-
 function u(name, name1) {
   console.log('hello ' + name + ' ' + name1);
 }
@@ -140,3 +139,31 @@ console.log(result1);
 const arr1 = [1 ,2 ,3, 4, 5];
 const result2 = Math.max(...arr1);
 console.log(result2);
+
+
+
+window.name = 'Moko';
+
+//普通のthisのオブジェクト
+const person1 = {
+  name: 'Tom',
+  hello: function() {
+    console.log('Hello ' + this.name);
+  }
+}
+
+
+const abc = () => console.log('Bye ' + this.name);
+//アロー関数を使った場合
+const person2 = {
+  name: 'Tom',
+  hello: function() {
+    console.log('Hello ' + this.name);
+    abc();
+  }
+}
+
+person1.hello();
+person2.hello();
+
+
