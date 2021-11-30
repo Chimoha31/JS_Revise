@@ -66,3 +66,68 @@ person.hello1s();
 setTimeout(function() {
   return person.bye()
 }, 1000);
+
+
+/**
+ * 問題：
+ * コールバックとクロージャーの仕組みを使って、
+ * setTimeoutで1秒後に"hello Tom"と表示されるような
+ * hello関数を作成してみましょう。
+ * 
+ * 条件としてはhello関数の引数には必ず
+ * nameの引数を取るものとします。
+ * 
+ */
+function hello2(name) {
+    return function() {
+      console.log("Hello " + name);
+    }
+  }
+  
+  /**
+   * 実行文は以下の通りです。
+   */
+  setTimeout(hello2('Tom'), 1000);
+
+
+  /**
+ * 問題：
+ * 【修了確認】コールバック関数で実装したcalcFactoryを
+ * １秒後にconsole.logまたはalertで計算式が表示される
+ * ようにcalcFactory関数内の実装を変更してみてください。
+ */
+function calcFactory(val, callback) {
+
+  function callbackAfter1s(str) {
+      setTimeout(console.log.bind(null, str), 1000);
+  }
+
+  return {
+      plus: function(target) {
+          const newVal = val + target;
+          callbackAfter1s(`${val} + ${target} = ${newVal}`);
+          val = newVal;
+      },
+      minus: function(target) {
+          const newVal = val - target;
+          callbackAfter1s(`${val} - ${target} = ${newVal}`);
+          val = newVal;
+      },
+      multiply: function(target) {
+          const newVal = val * target;
+          callbackAfter1s(`${val} x ${target} = ${newVal}`);
+          val = newVal;
+      },
+      divide: function(target) {
+          const newVal = val / target;
+          callbackAfter1s(`${val} / ${target} = ${newVal}`);
+          val = newVal;
+      }
+  };
+}
+
+const calc3 = calcFactory(10, console.log);
+calc3.plus(5); 
+calc3.minus(3); 
+calc3.multiply(3);
+calc3.divide(2);
