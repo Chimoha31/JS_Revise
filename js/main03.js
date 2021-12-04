@@ -183,7 +183,6 @@ class Person {
 const bob = new Person('Bob ', 23);
 console.log(bob)
 
-
 // function Person(name, age) {
 //         this.name = name;
 //         this.age = age;
@@ -192,3 +191,38 @@ console.log(bob)
 // Person.prototype.hello = function() {
 //     console.log('hello ' + this.name);
 // }
+
+class Person2 {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    hello() {
+        console.log('hello ' + this.name);
+    }
+}
+
+const Sam = new Person2('Sam', 35, 'Male');
+console.log(Sam);
+Sam.hello();
+
+
+class Japanese extends Person2{
+    constructor(name, age, gender) {
+        super(name, age);
+        this.gender= gender;
+    }
+
+    hello() {
+        console.log('Hello ' + this.name);
+    }
+
+    bye() {
+        console.log('Bye ' + this.name);
+    }
+}
+
+const taro = new Japanese('Taro', 23, 'Male');
+console.log(taro);
+taro.bye();
