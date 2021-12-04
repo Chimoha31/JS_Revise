@@ -143,8 +143,8 @@ calc3.divide(2);
 const addNumberFactory = num => value => num + value;
 
 const add5 = addNumberFactory(5);
-const result = add5(10);
-console.log(result);
+const result3 = add5(10);
+console.log(result3);
 
 /**
  * 問題２：
@@ -161,9 +161,34 @@ const incrementFactory = () => {
 
 }
 
-const increment = incrementFactory();
+const increment2 = incrementFactory();
 
-increment();
-increment();
-increment();
-increment();
+increment2();
+increment2();
+increment2();
+increment2();
+
+
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    hello() {
+        console.log("hello " + this.name);
+    }
+}
+
+const bob = new Person('Bob ', 23);
+console.log(bob)
+
+
+// function Person(name, age) {
+//         this.name = name;
+//         this.age = age;
+// }
+
+// Person.prototype.hello = function() {
+//     console.log('hello ' + this.name);
+// }
