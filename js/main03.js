@@ -263,11 +263,16 @@ class Person20 {
     set name(val) {
         this._name = val;
     }
-
+// staticはinstance化しないで使用できるメソッドである
     static hello() {
         console.log('Chiho');
     }
 }
 
-const p2 = new Person20('Bob', 23);
+const p2 = new Person20('Hanakuso', 23);
+console.log(p2.name);
+p2.name = 'Moko';
+console.log(p2.name);
+
+// staticはinstance化しないで使用できるメソッドである
 Person20.hello();
