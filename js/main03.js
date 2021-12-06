@@ -215,7 +215,8 @@ class Japanese extends Person2{
     }
 
     hello() {
-        console.log('Hello ' + this.name);
+        super.hello()
+        // console.log('Hello ' + this.name);
     }
 
     bye() {
@@ -226,3 +227,18 @@ class Japanese extends Person2{
 const taro = new Japanese('Taro', 23, 'Male');
 console.log(taro);
 taro.bye();
+taro.hello()
+
+
+const arry = new Array(1,2,3,4);
+console.log(arry);
+arry["0"]
+arry.hasOwnProperty(0);
+
+const aaa = new String('Hello');
+console.log(aaa);
+console.log(aaa.toUpperCase());
+
+const bbb = new Number(100);
+console.log(bbb);
+console.log(bbb.toExponential()); //1e+2は10の2乗という意味
