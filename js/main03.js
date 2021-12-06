@@ -248,3 +248,26 @@ console.log(aaa)
 // ↓
 const bbb = 100;
 console.log(bbb.toExponential());
+
+
+class Person20 {
+    constructor(name, age) {
+        this._name = name;
+        this._age = age;
+    }
+
+    get name() {
+        return this._name;
+    }
+
+    set name(val) {
+        this._name = val;
+    }
+
+    static hello() {
+        console.log('Chiho');
+    }
+}
+
+const p2 = new Person20('Bob', 23);
+Person20.hello();
