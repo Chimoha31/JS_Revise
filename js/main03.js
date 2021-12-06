@@ -235,10 +235,16 @@ console.log(arry);
 arry["0"]
 arry.hasOwnProperty(0);
 
-const aaa = new String('Hello');
-console.log(aaa);
-console.log(aaa.toUpperCase());
+// const aaa = new String('Hello');
+// console.log(aaa);
+// console.log(aaa.toUpperCase());
+// ↓一緒
+const aaa = 'Hello'.toUpperCase();
+console.log(aaa)
 
-const bbb = new Number(100);
-console.log(bbb);
-console.log(bbb.toExponential()); //1e+2は10の2乗という意味
+// const bbb = new Number(100);
+// console.log(bbb);
+// console.log(bbb.toExponential()); //1e+2は10の2乗という意味
+// ↓
+const bbb = 100;
+console.log(bbb.toExponential());
