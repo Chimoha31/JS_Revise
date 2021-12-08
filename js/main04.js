@@ -189,3 +189,122 @@ calc.set(10)
  .set(2)
  .plus()
  .set(2)
+
+let i = 0;
+while(i < 10) {
+  console.log(i);
+  i++;
+}
+
+function fn() {
+  let a = 0;
+  return ++a;
+}
+console.log(fn());
+
+
+let j;
+for(let i = 0; i < 5; i++) {
+  j = i * 2;
+  setTimeout(function() {
+    console.log(j);
+  }, 1000)
+}
+
+const arr = [1, 2, 3,4 ,5];
+
+let v, b = 0;
+while(v = arr[b++]) {
+  console.log(v);
+}
+
+let h = 0;
+while(h < arr.length) {
+  console.log(arr[h]);
+  h++;
+}
+
+// イテレーター
+const items = {
+  props1: 'value1',
+  props2: 'value1',
+  props3: 'value1'
+}
+
+// イテレーター
+// Object.prototype[Symbol.iterator] = function() {
+//   const keys = Object.keys(this);
+//   let i = 0;
+//   let _this = this;
+//   return {
+//     next() {
+//       let key = keys[i++];
+//       return {
+//         value: [key, _this[key]],
+//         done: i > keys.length
+//       }
+//     }
+//   }
+// }
+
+// ジェネレーター
+Object.prototype[Symbol.iterator]=function* () {
+  for(let key in this) {
+    yield[key, this[key]];
+  }
+}
+
+for(let [k, v] of items){
+  console.log(k, v);
+}
+
+/**
+ * 問題：
+ * 引数で与えた範囲の値をステップ毎に返却する
+ * genStepというイテレーターを生成する関数を作成しましょう。
+ * 
+ * - genStepの要件
+ * 引数にmin, max, stepを取ります。
+ * min：下限値
+ * max：上限値
+ * step：ステップ
+ * 
+ * 以下のように実行した場合には
+ * const it = genStep(4, 10, 2);
+ * let a = it.next();
+ * 
+ * while(!a.done) {
+ *  console.log(a.value); -> 4, 6, 8, 10
+ *  a = it.next();
+ * }
+ * 
+ * の値が順番にコンソールに表示されます。
+ */
+
+function genStep(min=0, max=20, step=1) {
+  let i = min - step;
+
+  return {
+    next() {
+      i += step;
+      if(i > max) {
+        return{
+          done: true
+        }
+      }else{
+        return {
+          done: false,
+          value: i
+        }
+      }
+    }
+  }
+}
+ 
+const it = genStep(4, 10, 2);
+let a = it.next();
+
+while(!a.done) {
+  console.log(a.value);
+  a = it.next();
+}
