@@ -1,5 +1,10 @@
 // 'use strict';
+import {Person} from './person.js';
 
+const tim = new Person('Tim');
+const bob = new Person('Bob');
+tim.hello();
+bob.hello();
 // console.log(tim._name);
 
 // const targetObj = { a: 0 };
