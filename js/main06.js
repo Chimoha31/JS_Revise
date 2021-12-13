@@ -124,3 +124,5 @@ console.log(json);
 
 const obj2 = JSON.parse(json);
 console.log(obj2);
+//--------------------------------------------
+
